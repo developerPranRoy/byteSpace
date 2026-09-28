@@ -1,0 +1,103 @@
+import { NextResponse } from "next/server";
+import type { Course } from "@/types/course";
+
+const COURSES: Course[] = [
+  {
+    id: 1,
+    slug: "learn-figma-from-basic",
+    title: "Learn Figma from Basic",
+    category: "UI/UX Design",
+    author: "purepearl studio",
+    price: 25,
+    rating: 4.5,
+    level: "Beginner",
+    lessons: 17,
+    duration: "2 hours 16 mins",
+    comments: 59,
+    studentsLabel: "26+",
+    thumbnail: "/images/cards/card-asset.png",
+  },
+  {
+    id: 2,
+    slug: "build-digital-asset",
+    title: "Build Digital Asset",
+    category: "Marketing",
+    author: "purepearl studio",
+    price: 25,
+    rating: 4.5,
+    level: "Beginner",
+    lessons: 17,
+    duration: "2 hours 16 mins",
+    comments: 59,
+    studentsLabel: "26+",
+    thumbnail: "/images/cards/card-asset.png",
+  },
+  {
+    id: 3,
+    slug: "the-power-of-big-data",
+    title: "The Power of Big Data",
+    category: "Data Science",
+    author: "purepearl studio",
+    price: 25,
+    rating: 4.5,
+    level: "Beginner",
+    lessons: 17,
+    duration: "2 hours 16 mins",
+    comments: 59,
+    studentsLabel: "26+",
+    thumbnail: "/images/cards/card-data.png",
+  },
+  {
+    id: 4,
+    slug: "balancing-productivity-on-desk",
+    title: "Balancing Productivity on Desk",
+    category: "Productivity",
+    author: "purepearl studio",
+    price: 25,
+    rating: 4.5,
+    level: "Beginner",
+    lessons: 17,
+    duration: "2 hours 16 mins",
+    comments: 59,
+    studentsLabel: "26+",
+    thumbnail: "/images/cards/card-asset.png",
+  },
+  {
+    id: 5,
+    slug: "mastering-money-management",
+    title: "Mastering Money Management",
+    category: "Freelance & Entrepreneurship",
+    author: "purepearl studio",
+    price: 25,
+    rating: 4.5,
+    level: "Beginner",
+    lessons: 17,
+    duration: "2 hours 16 mins",
+    comments: 59,
+    studentsLabel: "26+",
+    thumbnail: "/images/cards/card-data.png",
+  },
+  {
+    id: 6,
+    slug: "from-idea-to-startup-success",
+    title: "From Idea to Startup Success",
+    category: "Marketing",
+    author: "purepearl studio",
+    price: 25,
+    rating: 4.5,
+    level: "Beginner",
+    lessons: 17,
+    duration: "2 hours 16 mins",
+    comments: 59,
+    studentsLabel: "26+",
+    thumbnail: "/images/cards/card-asset.png",
+  },
+];
+
+export async function GET(request: Request) {
+  const category = new URL(request.url).searchParams.get("category");
+
+  const data = category ? COURSES.filter((course) => course.category === category) : COURSES;
+
+  return NextResponse.json(data);
+}
